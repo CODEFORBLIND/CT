@@ -1,37 +1,68 @@
 #include <iostream>
 using namespace std;
 
-void manualSwap(int* a, int* b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
+void merge(int arr[], int low, int mid, int high) {
+    int n1 = mid - low + 1;
+    int n2 = high - mid;
 
-int partition(int arr[], int low, int high) {
-    int pivot = arr[high];
-    int i = (low - 1);
-    for (int j = low; j <= high - 1; j++) {
-        if (arr[j] < pivot) {
+    int* left = new int[n1];
+    int* right = new int[n2];
+
+    for (int i = 0; i < n1; i++){
+        left[i] = arr[low + i];
+    }
+    for (int j = 0; j < n2; j++){
+        right[j] = arr[mid + 1 + j];
+    } 
+
+    int i = 0; 
+    int j = 0; 
+    int k = low; 
+
+    while (i < n1 && j < n2) {
+        if (left[i] <= right[j]) {
+            arr[k] = left[i];
             i++;
-            manualSwap(&arr[i], &arr[j]);
+        } else {
+            arr[k] = right[j];
+            j++;
         }
+        k++;
     }
-    manualSwap(&arr[i + 1], &arr[high]);
-    return (i + 1);
+
+    while (i < n1) {
+        arr[k] = left[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2) {
+        arr[k] = right[j];
+        j++;
+        k++;
+    }
+
+    delete[] left;
+    delete[] right;
 }
 
-void QuickSort(int arr[], int low, int high) {
+
+void MergeSort(int arr[], int low, int high) {
     if (low < high) {
-        int pi = partition(arr, low, high);
-        QuickSort(arr, low, pi - 1);
-        QuickSort(arr, pi + 1, high);
+        int mid = low + (high - low) / 2;
+
+        MergeSort(arr, low, mid);
+        MergeSort(arr, mid + 1, high);
+
+        merge(arr, low, mid, high);
     }
 }
+
 
 int findMinXor(int arr[], int N) {
     if (N < 2) return 0;
 
-    QuickSort(arr, 0, N - 1);
+    MergeSort(arr, 0, N - 1);
 
     int minXor = arr[0] ^ arr[1];
     for (int i = 1; i < N - 1; i++) {
@@ -44,12 +75,12 @@ int findMinXor(int arr[], int N) {
 }
 
 int main() {
-    int arr[] = {0, 2, 5, 7};
+    int arr[] = {0, 5, 2, 7};
     int N = sizeof(arr) / sizeof(arr[0]);
 
     int result = findMinXor(arr, N);
 
-    cout << result << std::endl;
+    cout << result << endl;
 
     return 0;
 }
