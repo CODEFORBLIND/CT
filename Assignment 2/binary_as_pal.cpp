@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-long long reverseBits(long long n, int len) {
+long long reversingBitss(long long n, int len) {
     long long rev = 0;
     for (int i = 0; i < len; i++) {
         if (n & (1LL << i)) {
@@ -14,7 +14,7 @@ long long reverseBits(long long n, int len) {
 /**
  * Function to find the Ath Binary Palindrome.
  */
-long long findAthPalindrome(int A) {
+long long findPalindrome(int A) {
     if (A == 1) return 1; // 1st is "1"
 
     int len = 1;
@@ -63,7 +63,7 @@ int main() {
     // Palindromes: 1, 3, 5, 7, 9, 15, 17, 21, 27...
     // 9th should be 27 (11011 in binary)
     
-    cout << findAthPalindrome(A) << endl;
+    cout << findPalindrome(A) << endl;
     
     return 0;
 }
