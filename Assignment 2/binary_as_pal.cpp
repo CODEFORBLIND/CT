@@ -41,7 +41,8 @@ long long findPalindrome(int input) {
 }
 
 int main() {
-    int input = 9;     
+    int input = 9;
+    // int input = 10;
     cout << findPalindrome(input) << endl;
     return 0;
 }
