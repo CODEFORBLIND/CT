@@ -76,6 +76,7 @@ int findMinXor(int arr[], int N) {
 
 int main() {
     int arr[] = {0, 5, 2, 7};
+    // int arr[] = {6, 9, 12, 20};
     int N = sizeof(arr) / sizeof(arr[0]);
 
     int result = findMinXor(arr, N);

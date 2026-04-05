@@ -8,7 +8,6 @@ int countTrailingZeroes(int A) {
     }
 
     int count = 0;
-
     while ((A & 1) == 0) {
         count++;      
         A = A >> 1;   
@@ -18,12 +17,9 @@ int countTrailingZeroes(int A) {
 }
 
 int main() {
-
     int A = 18;
-
+    // int A = 24;
     int result = countTrailingZeroes(A);
-
     cout << result << endl;
-
     return 0;
 }

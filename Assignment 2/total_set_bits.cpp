@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-long long MOD = 1000000007;
+long long modulo = 1000000007;
 
 int calcLargest2Power(int n) {
     int y = 0;
@@ -22,13 +22,14 @@ int setBitCount(int num) {
     
     long long msb = (num - (1LL << x) + 1);
     
-    long long total = (bitsTillPower % MOD + msb % MOD + setBitCount(num - (1LL << x)) % MOD) % MOD;
+    long long total = (bitsTillPower % modulo + msb % modulo + setBitCount(num - (1LL << x)) % modulo) % modulo;
     
     return (int)total;
 }
 
 int main(){
-    int count = setBitCount(11);
+    // int count = setBitCount(11);
+    int count = setBitCount(21);
     cout<< "Total set bits are: "<<count;
 
     return 0;
