@@ -1,4 +1,5 @@
 #include <iostream>
+using namespace std;
 
 /**
  * Function to count total set bits from 1 to A.
@@ -44,7 +45,7 @@ int main() {
     int A = 3; 
     // Numbers 1 (01), 2 (10), 3 (11). Total bits: 1 + 1 + 2 = 4.
     
-    std::cout << "Total set bits: " << countTotalSetBits(A) << std::endl;
+    cout << "Total set bits: " << countTotalSetBits(A) << endl;
     
     return 0;
 }

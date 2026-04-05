@@ -1,9 +1,6 @@
 #include <iostream>
 using namespace std;
 
-/**
- * Helper to reverse bits of a number manually.
- */
 long long reverseBits(long long n, int len) {
     long long rev = 0;
     for (int i = 0; i < len; i++) {
