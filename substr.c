@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <string.h>
-#include <stdbool.h> // Required for 'bool', 'true', 'false'
+#include <stdbool.h> 
 
 bool isSubstringPresent(char str[], char sub[]) {
     int n = strlen(str);
     int m = strlen(sub);
 
-    // If substring is longer than main string, it can't be present
     if (m > n) return false;
 
     // Loop through the main string
