@@ -1,3 +1,5 @@
+// Method 1 : backtracking
+
 #include <iostream>
 
 using namespace std;
@@ -58,3 +60,5 @@ int main() {
 
     return 0;
 }
+
+// Method 2 : branch and bound
