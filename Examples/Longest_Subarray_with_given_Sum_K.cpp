@@ -1,44 +1,26 @@
-
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
-class Solution
-{
-public:
-    int longestSubarray(vector<int> &nums, int k)
-    {
-        int n = nums.size(); 
-        int maxLength = 0;
-
-        // starting index
-        for (int startIndex = 0; startIndex < n; startIndex++) { 
-            // ending index
-            for (int endIndex = startIndex; endIndex < n; endIndex++) { 
-                /* add all the elements of 
-                   subarray = nums[startIndex...endIndex]  */
-                int currentSum = 0;
-                for (int i = startIndex; i <= endIndex; i++) {
-                    currentSum += nums[i];
-                }
-
-                if (currentSum == k)
-                    maxLength = max(maxLength, endIndex - startIndex + 1);
+int longestsubarray(int arr[], int n, int k){
+    int maxlen = 0;
+    for (int i = 0; i < n; i++){
+        for (int j = i; j < n; j++){
+            int sum = 0;
+            for (int k = i ; k<= j; k++){
+                sum +=arr[k];
+            }
+            if (sum == k){
+                maxlen = max(maxlen, j-i+1);
             }
         }
-        return maxLength;
     }
-};
+    return maxlen;
+}
 
-int main()
-{
-    vector<int> a = {10, 5, 2, 7, 1, 9};
+int main() {
+    int arr[] = {10, 5, 2, 7, 1, 9};
+    int size = sizeof(arr)/sizeof(int);
     int k = 15;
-
-    // Create an instance of the Solution class
-    Solution solution;
-    // Function call to get the result
-    int len = solution.longestSubarray(a, k);
-    
-    cout << "The length of the longest subarray is: " << len << "\n";
+    cout<< longestsubarray(arr,size,k);
     return 0;
 }
