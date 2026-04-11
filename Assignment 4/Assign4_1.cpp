@@ -1,6 +1,7 @@
 #include <iostream>
 #include <map>
 #include <string>
+using namespace std;
 
 bool anagram(std::string a, std::string b)
 {
@@ -40,11 +41,11 @@ int main()
     bool result = anagram("greate", "regate");
     if (result)
     {
-        std::cout << "Anagram!" << std::endl;
+        cout << "Anagram!" << endl;
     }
     else
     {
-        std::cout << "Not an Anagram!" << std::endl;
+        cout << "Not an Anagram!" << endl;
     }
     return 0;
 }
