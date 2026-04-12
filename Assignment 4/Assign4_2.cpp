@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-bool match(std::string a, std::string b)
+bool match(string a, string b)
 {
     int m = a.length();
     int n = b.length();
@@ -16,7 +16,7 @@ bool match(std::string a, std::string b)
         {
             dp[0][i] = dp[0][i - 1];
         }
-    }
+    }   
 
     for (int i = 1; i <= m; i++)
     {

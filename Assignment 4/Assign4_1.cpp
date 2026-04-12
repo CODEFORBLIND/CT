@@ -1,53 +1,43 @@
 #include <iostream>
-#include <map>
 #include <string>
+#include <unordered_map>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
-bool anagram(string first, string second)
-{
-    map<char, int> map_one;
-    map<char, int> map_sec;
+    bool check(string s1, string s2) {
+        unordered_map<string, bool> memo;
+        if (s1 == s2) return true;
+        if (s1.length() != s2.length()) return false;
+        
+        string key = s1 + "_" + s2;
+        if (memo.count(key)) return memo[key];
 
-    for (int i = 0; i < first.length(); i++)
-    {
-        if (map_one.count(first[i]) == 0)
-        {
-            map_one[first[i]] = 1;
+        // Pruning: Scrambled strings must have the same character counts
+        string temp1 = s1, temp2 = s2;
+        sort(temp1.begin(), temp1.end());
+        sort(temp2.begin(), temp2.end());
+        if (temp1 != temp2) return memo[key] = false;
+
+        int n = s1.length();
+        for (int i = 1; i < n; i++) {
+            if (check(s1.substr(0, i), s2.substr(0, i)) && 
+                check(s1.substr(i), s2.substr(i))) {
+                return memo[key] = true;
+            }
+            if (check(s1.substr(0, i), s2.substr(n - i)) && 
+                check(s1.substr(i), s2.substr(0, n - i))) {
+                return memo[key] = true;
+            }
         }
-        else
-        {
-            map_one[first[i]]++;
-        }
-    };
-
-    for (int j = 0; j < second.length(); j++)
-    {
-        if (map_sec.count(second[j]) == 0)
-        {
-            map_sec[second[j]] = 1;
-        }
-        else
-        {
-            map_sec[second[j]]++;
-        }
-    };
-
-    return map_one == map_sec;
-};
-
-int main()
-{
-
-    bool result = anagram("greate", "regate");
-    // bool result = anagram("greatew", "regate");
-
-    if (result)
-    {
-        cout << "Anagram!" << endl;
+        return memo[key] = false;
     }
-    else
-    {
-        cout << "Not an Anagram!" << endl;
-    }
+
+
+int main() {
+    string A = "great", B = "rgtae";
+    // string A = "greate", B = "rgtae";
+    cout << "Is Scramble: " << check(A, B) << endl;
     return 0;
 }
