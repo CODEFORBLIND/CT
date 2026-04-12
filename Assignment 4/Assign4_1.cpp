@@ -3,42 +3,44 @@
 #include <string>
 using namespace std;
 
-bool anagram(std::string a, std::string b)
+bool anagram(string first, string second)
 {
-    std::map<char, int> map_a;
-    std::map<char, int> map_b;
+    map<char, int> map_one;
+    map<char, int> map_sec;
 
-    for (int i = 0; i < a.length(); i++)
+    for (int i = 0; i < first.length(); i++)
     {
-        if (map_a.count(a[i]) == 0)
+        if (map_one.count(first[i]) == 0)
         {
-            map_a[a[i]] = 1;
+            map_one[first[i]] = 1;
         }
         else
         {
-            map_a[a[i]]++;
+            map_one[first[i]]++;
         }
     };
 
-    for (int i = 0; i < b.length(); i++)
+    for (int j = 0; j < second.length(); j++)
     {
-        if (map_b.count(b[i]) == 0)
+        if (map_sec.count(second[j]) == 0)
         {
-            map_b[b[i]] = 1;
+            map_sec[second[j]] = 1;
         }
         else
         {
-            map_b[b[i]]++;
+            map_sec[second[j]]++;
         }
     };
 
-    return map_a == map_b;
+    return map_one == map_sec;
 };
 
 int main()
 {
 
     bool result = anagram("greate", "regate");
+    // bool result = anagram("greatew", "regate");
+
     if (result)
     {
         cout << "Anagram!" << endl;
