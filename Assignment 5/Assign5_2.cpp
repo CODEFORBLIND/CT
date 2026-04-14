@@ -29,7 +29,7 @@ void maxProfit(jobs job[], int n, int max_cap){
     for (int i = n-1; i >= 0; i--)
     {
         cap += job[i].units;
-        if(cap < max_cap){
+        if(cap <= max_cap){
             max_profit += job[i].profit;
             temp[k] = job[i];
             k++;
