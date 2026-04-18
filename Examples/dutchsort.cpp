@@ -21,7 +21,7 @@ void sort012(int arr[], int n) {
 }
 
 int main() {
-    int arr[] = { 0, 1, 2, 0, 1, 2 };
+    int arr[] = { 0, 1, 2, 0, 1, 2, 0, 0 ,0, 2, 1};
     int n = sizeof(arr)/ sizeof(int);
     
     sort012(arr, n); 
